@@ -58,7 +58,7 @@ public class ManaHandlerStrategy extends HandlerStrategy<IManaReceiver, Object> 
 
                 if (mode == Actionable.MODULATE) {
                     var before = handler.getCurrentMana();
-                    handler.receiveMana(-Ints.saturatedCast(amount));
+                    handler.receiveMana(-Math.min(amount, before));
                     return Math.max(0, before - handler.getCurrentMana());
                 }
 
